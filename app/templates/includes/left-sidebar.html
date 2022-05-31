@@ -1,0 +1,143 @@
+<!-- ========== Left Sidebar Start ========== -->
+<div class="left-side-menu">
+    
+    <!-- LOGO -->
+    <a href="{{ url_for('main.index') }}" class="logo text-center logo-light">
+        <span class="logo-lg">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="" height="16">
+        </span>
+        <span class="logo-sm">
+            <img src="{{ url_for('static', filename='images/logo_sm.png') }}" alt="" height="16">
+        </span>
+    </a>
+
+    <!-- Combine? -->
+    <a href="{{ url_for('main.index') }}" class="logo text-center logo-dark">
+        <span class="logo-lg">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="" height="40">
+        </span>
+        <span class="logo-sm">
+            <img src="{{ url_for('static', filename='images/logo_sm.png') }}" alt="" height="40">
+        </span>
+    </a>
+    
+    <div class="h-100" id="left-side-menu-container" data-simplebar>
+
+        <!--- Sidemenu -->
+        <ul class="metismenu side-nav">
+
+            <!--<li class="side-nav-title side-nav-item">Navigation</li>
+
+            <li class="side-nav-item">
+                <a href="javascript: void(0);" class="side-nav-link">
+                    <i class="uil-home-alt"></i>
+                    <span class="badge badge-success float-right">4</span>
+                    <span> Dashboards </span>
+                </a>
+                <ul class="side-nav-second-level" aria-expanded="false">
+                    <li>
+                        <a href="dashboard-analytics.html">Analytics</a>
+                    </li>
+                    <li>
+                        <a href="dashboard-crm.html">CRM</a>
+                    </li>
+                    <li>
+                        <a href="index.html">Ecommerce</a>
+                    </li>
+                    <li>
+                        <a href="dashboard-projects.html">Projects</a>
+                    </li>
+                </ul>
+            </li> -->
+
+            <li class="side-nav-title side-nav-item">Portfolio</li>
+
+            <li class="side-nav-item">
+                <a href="{{ url_for('main.index') }}" class="side-nav-link">
+					<i class="uil-home-alt"></i>
+					<span> Overview </span>
+					
+                </a>
+            </li>
+
+            <li class="side-nav-item">
+                <a href="{{ url_for('main.portfoliodetails') }}" class="side-nav-link">
+					<i class="uil-chart-line"></i>
+					<span> Holdings </span>
+					
+                </a>
+            </li>
+			{% if issue_df is defined %}
+				<li class="side-nav-title side-nav-item">ESG</li>
+
+				<li class="side-nav-item">
+					<a href="{{ url_for('main.issuer', slug=issue_df.CUSIP[0]) }}" class="side-nav-link">
+						<i class="uil-copy-alt"></i>
+						<span> ESG Overview </span>
+						
+					</a>
+				</li>
+				
+
+				<li class="side-nav-item">
+					<a href="{{ url_for('main.issuerdetails', slug=issue_df.CUSIP[0]) }}" class="side-nav-link">
+						<i class="uil-table"></i>
+						<span> ESG Details </span>
+						
+					</a>
+				</li>
+				
+				<li class="side-nav-title side-nav-item">Credit</li>
+			
+				<li class="side-nav-item">
+					<a href="javascript: void(0);" class="side-nav-link">
+						<i class="uil-chart"></i>
+						<span> Credit Fundamentals </span>
+						<span class="menu-arrow"></span>
+					</a>
+					<ul class="side-nav-second-level" aria-expanded="false">
+						</li>
+						<li>
+							<a href="javascript: void(0);">Overview</a>
+						</li>
+						<li>
+							<a href="javascript: void(0);">Demographics</a>
+						</li>
+						<li>
+							<a href="javascript: void(0);">Income</a>
+						</li>
+						<li>
+							<a href="javascript: void(0);">Housing</a>
+						</li>
+					</ul>
+				</li>
+			{% else %}
+				
+			{% endif %}
+
+			
+			
+			
+        </ul>
+
+        <!-- Help Box -->
+        <!--<div class="help-box text-white text-center">
+            <a href="javascript: void(0);" class="float-right close-btn text-white">
+                <i class="mdi mdi-close"></i>
+            </a>
+            <img src="static/images/help-icon.svg" height="90" alt="Helper Icon Image" />
+            <h5 class="mt-3">Unlimited Access</h5>
+            <p class="mb-3">Upgrade to plan to get access to unlimited reports</p>
+            <a href="javascript: void(0);" class="btn btn-outline-light btn-sm">Upgrade</a>
+        </div>
+		-->
+        <!-- end Help Box -->
+        <!-- End Sidebar -->
+
+        <div class="clearfix"></div>
+
+    </div>
+    <!-- Sidebar -left -->
+
+</div>
+<!-- Left Sidebar End -->

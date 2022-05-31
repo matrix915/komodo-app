@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Komodo - Municipal ESG Rankings</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Komodo - Municipal Bond ESG Data and Ranking" name="description" />
+        <meta content="Joel Perdzock" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}">
+
+		<!-- CSS -->
+        <!-- App css -->
+        <link href="{{ url_for('static', filename='css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/app.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
+        <!--<link href="assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style" />-->
+		
+		<!-- Datatables CSS -->
+		<link href="{{ url_for('static', filename='css/vendor/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+		<link href="{{ url_for('static', filename='css/vendor/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+
+
+		<!-- JS -->
+		<!-- Hyper bundle -->
+        <script src="{{ url_for('static', filename='js/vendor.min.js') }}"></script>
+
+		<!-- Datatables js -->
+		<script src="{{ url_for('static', filename='js/vendor/jquery.dataTables.min.js') }} "></script>
+		<script src="{{ url_for('static', filename='js/vendor/dataTables.bootstrap4.js') }} "></script>
+		<script src="{{ url_for('static', filename='js/vendor/dataTables.responsive.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/vendor/responsive.bootstrap4.min.js') }}"></script>
+		
+
+		<!-- Datatable Init js -->
+		<!--<script src="{{ url_for('static', filename='js/pages/demo.datatable-init.js') }}"></script>-->
+		
+	    <!-- third party js -->
+        <script src="{{ url_for('static', filename='js/vendor/Chart.bundle.min.js') }}"></script>
+
+    </head>
+
+    <body class="loading" data-layout-config='{"leftSideBarTheme":"light","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": false}'>
+        <!-- Begin page -->
+        <div class="wrapper">
+		
+			<!-- Load Left hand menu -->
+			{% include 'includes/left-sidebar.html' %}
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+				
+					<!-- Load top bar menu -->
+					{% include 'includes/topbar.html' %}
+                    
+					
+					<!-- 
+					Page Content
+					-->
+					 {% block content %}
+					 {% endblock content %}  
+					 
+					 
+					 
+					</div> <!-- content -->
+
+				<!-- Load Footer -->
+				{% include 'includes/footer.html' %}
+               
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+
+        </div>
+        <!-- END wrapper -->
+
+
+
+
+        <script src="{{ url_for('static', filename='js/app.min.js') }}"></script>
+
+		
+		<!-- Specific Page JS goes HERE -->
+		{% block javascripts %}{% endblock javascripts %}
+        
+    </body>
+</html>

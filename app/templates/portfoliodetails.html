@@ -1,0 +1,136 @@
+{% extends "includes/base.html" %}
+
+{% block title %} Dashboard {% endblock title %}
+
+<!-- Specific CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+
+
+ <!-- Start Content-->
+ <div class="container-fluid">
+     
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <!--<div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
+                        <li class="breadcrumb-item active">Starter</li>
+                    </ol>
+                </div>-->
+                <h3 class="page-title">ESG Portfolio Overview</h3>
+				 
+            </div>
+        </div>
+    </div>     
+    <!-- end page title --> 
+	 
+	<div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+			
+					<h4 class="header-title">{{ portfolio_details.MuniPortfolioName[0] }}</h4>
+
+
+					<div class="table-responsive">
+						<table id="scroll-horizontal-datatable" class="table table-striped table-responsive-sm w-100 nowrap ">
+						<!-- Table Options-->
+						<div class="dropdown float-right">
+							<a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+								<i class="mdi mdi-dots-vertical"></i>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right">
+								<a href="javascript:void(0);" class="dropdown-item">Switch Portfolio</a>
+							</div>
+						</div>
+							<thead>
+								<tr>
+								<th class="text-right" colspan="1">CUSIP</th>
+								<th class="text-right" colspan="1">Matched Entity</th>
+								<th class="text-right" colspan="1">Sector</th>
+								<th class="text-right" colspan="1">ESG Score</th>
+								<th class="text-right" colspan="1">Score Change</th>
+								</tr>
+							</thead>
+							<tbody>
+							{% for index, row in portfolio_df.iterrows() %}
+								<tr>
+								<td class="text-right"><a href="{{ url_for('main.issuer', slug=row[0]) }}">{{ row[0] }}</a></td>
+								<td class="text-right">{{ row[1] }}</td>
+								<td class="text-right">{{ row[2] }}</td>
+								<td class="text-right">
+									{{ row[4] | round|int }}&nbsp;&nbsp;
+								</td>
+								<td class="text-right">
+									<!-- If score improved, show green. Else show red -->
+									{% if row[6] > 0 %}
+									<span class="text-success"><b> +{{ row[6] | round|int }} </b></span>
+									{% else %}
+									<span class="text-danger"><b> {{ row[6] | round|int }} </b></span>
+									{% endif %}
+								</td>
+
+								</tr>
+							{% endfor %}
+							</tbody>
+						</table>                                           
+					</div>
+
+                </div> <!-- end card body-->
+            </div> <!-- end card -->
+        </div><!-- end col-->
+
+    </div><!-- end row-->
+     
+ </div> <!-- container -->
+
+              
+
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+
+    // Default Datatable
+    $('#basic-datatable').DataTable({
+        keys: true,
+        "language": {
+            "paginate": {
+                "previous": "<i class='mdi mdi-chevron-left'>",
+                "next": "<i class='mdi mdi-chevron-right'>"
+            }
+        },
+        "drawCallback": function () {
+            $('.dataTables_paginate > .pagination').addClass('pagination-rounded');
+        }
+    });
+	
+	// Horizontal Datatable
+	$('#scroll-horizontal-datatable').DataTable({
+        "scrollX": true,
+        "language": {
+            "paginate": {
+                "previous": "<i class='mdi mdi-chevron-left'>",
+                "next": "<i class='mdi mdi-chevron-right'>"
+            }
+        },
+        "drawCallback": function () {
+            $('.dataTables_paginate > .pagination').addClass('pagination-rounded');
+        },
+		"order": [[ 3, "desc" ]]
+    });
+
+
+
+</script>
+
+
+
+{% endblock javascripts %}

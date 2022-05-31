@@ -1,0 +1,109 @@
+{% extends "includes/base.html" %}
+
+{% block title %} Dashboard {% endblock title %}
+
+<!-- Specific CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+
+
+ <!-- Start Content-->
+ <div class="container-fluid">
+     
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <!--<div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
+                        <li class="breadcrumb-item active">Starter</li>
+                    </ol>
+                </div>-->
+                <!--<h4 class="page-title">ESG Portfolio Overview</h4>-->
+				 
+            </div>
+        </div>
+    </div>     
+    <!-- end page title --> 
+	 
+	<div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+					
+                    <h4 class="header-title">Search Results</h4>
+
+					<!-- Search results table -->
+					<table id="#basic-datatable" class="table table-striped table-responsive-sm w-100 nowrap ">
+						<thead>
+							<tr>
+							<th>CUSIP</th>
+							<th>Matched Issuer</th>
+							<th>State</th>
+							</tr>
+						</thead>
+						<tbody>
+						{% for index, row in search_df.iterrows() %}
+							<tr>
+							<td><a href="{{ url_for('main.issuer', slug=row[0]) }}">{{ row[0] }}</a></td>
+							<td><a href="{{ url_for('main.issuer', slug=row[0]) }}">{{ row[1] }}</a></td>
+							<td>{{ row[2] }}</td>
+							</tr>
+						{% endfor %}
+						</tbody>
+                    </table>                                           
+                   
+
+                </div> <!-- end card body-->
+            </div> <!-- end card -->
+        </div><!-- end col-->
+
+    </div><!-- end row-->
+     
+ </div> <!-- container -->
+
+              
+
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+
+    // Default Datatable
+    $('#basic-datatable').DataTable({
+        keys: true,
+        "language": {
+            "paginate": {
+                "previous": "<i class='mdi mdi-chevron-left'>",
+                "next": "<i class='mdi mdi-chevron-right'>"
+            }
+        },
+        "drawCallback": function () {
+            $('.dataTables_paginate > .pagination').addClass('pagination-rounded');
+        }
+    });
+	
+	// Horizontal Datatable
+	$('#scroll-horizontal-datatable').DataTable({
+        "scrollX": true,
+        "language": {
+            "paginate": {
+                "previous": "<i class='mdi mdi-chevron-left'>",
+                "next": "<i class='mdi mdi-chevron-right'>"
+            }
+        },
+        "drawCallback": function () {
+            $('.dataTables_paginate > .pagination').addClass('pagination-rounded');
+        }
+    });
+
+</script>
+
+
+
+{% endblock javascripts %}

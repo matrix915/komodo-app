@@ -1,0 +1,205 @@
+{% extends "includes/base.html" %}
+
+{% block title %} Dashboard {% endblock title %}
+
+<!-- Specific CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+
+
+ <!-- Start Content-->
+ <div class="container-fluid">
+     
+     <!-- start page title -->
+     <div class="row">
+         <div class="col-12">
+             <div class="page-title-box">
+			 
+				<!-- Export to PDF -->
+                <div class="page-title-right">
+                    <button type="button" class="btn btn-secondary" data-toggle="popover" title="Notice" data-content="Export to PDF coming soon!"><i class="dripicons-export"></i> Export to PDF</button>
+                 </div>
+             
+				<!-- Page title and subtitle -->
+				<h3 class="page-title">{{ geoDetails_df.ObligorName[0] }}</h3>
+                <h4 class="page-title">ESG Details</h4>
+				 
+             </div>
+         </div>
+     </div>     
+     <!-- end page title --> 
+
+	 
+	 
+	<!-- Environmental Details -->
+	 <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+					<!-- Table Options-->
+					<div class="dropdown float-right">
+						<a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+							<i class="mdi mdi-dots-vertical"></i>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right">
+							<a href="javascript:void(0);" class="dropdown-item">Change Years</a>
+							<a href="javascript:void(0);" class="dropdown-item">Export to Excel</a>
+						</div>
+					</div>
+					
+					<!-- Table Title -->
+					<h4 class="header-title">Environmental</h4>
+					
+					<!-- Data table-->
+					{{ environment_table | safe }}
+
+                </div> <!-- end card body-->
+            </div> <!-- end card -->
+        </div><!-- end col-->
+    </div>
+	
+	<!-- Community Details -->
+	 <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+					<!-- Table Options-->
+					<div class="dropdown float-right">
+						<a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+							<i class="mdi mdi-dots-vertical"></i>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right">
+							<a href="javascript:void(0);" class="dropdown-item">Change Years</a>
+							<a href="javascript:void(0);" class="dropdown-item">Export to Excel</a>
+						</div>
+					</div>
+					
+					<!-- Table Title -->
+					<h4 class="header-title">Community</h4>
+					
+					<!-- Data table-->
+					{{ community_table | safe }}
+
+                </div> <!-- end card body-->
+            </div> <!-- end card -->
+        </div><!-- end col-->
+    </div>
+	 
+	 
+<!-- Wealth Details -->
+	 <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+					<!-- Table Options-->
+					<div class="dropdown float-right">
+						<a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+							<i class="mdi mdi-dots-vertical"></i>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right">
+							<a href="javascript:void(0);" class="dropdown-item">Change Years</a>
+							<a href="javascript:void(0);" class="dropdown-item">Export to Excel</a>
+						</div>
+					</div>
+					
+					<!-- Table Title -->
+					<h4 class="header-title">Wealth</h4>
+					
+					<!-- Data table-->
+					{{ wealth_table | safe }}
+
+                </div> <!-- end card body-->
+            </div> <!-- end card -->
+        </div><!-- end col-->
+    </div>
+	 
+
+<!-- Health Details -->
+	 <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+					<!-- Table Options-->
+					<div class="dropdown float-right">
+						<a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+							<i class="mdi mdi-dots-vertical"></i>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right">
+							<a href="javascript:void(0);" class="dropdown-item">Change Years</a>
+							<a href="javascript:void(0);" class="dropdown-item">Export to Excel</a>
+						</div>
+					</div>
+					
+					<!-- Table Title -->
+					<h4 class="header-title">Health</h4>
+					
+					<!-- Data table-->
+					{{ health_table | safe }}
+
+                </div> <!-- end card body-->
+            </div> <!-- end card -->
+        </div><!-- end col-->
+    </div>
+ 
+	<!-- Governance Details -->
+	 <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+					<!-- Table Options-->
+					<div class="dropdown float-right">
+						<a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+							<i class="mdi mdi-dots-vertical"></i>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right">
+							<a href="javascript:void(0);" class="dropdown-item">Change Years</a>
+							<a href="javascript:void(0);" class="dropdown-item">Export to Excel</a>
+						</div>
+					</div>
+					
+					<!-- Table Title -->
+					<h4 class="header-title">Governance</h4>
+					
+					<!-- Data table-->
+					{{ governance_table | safe }}
+
+                </div> <!-- end card body-->
+            </div> <!-- end card -->
+        </div><!-- end col-->
+    </div>
+ 
+
+	<!-- Footnotes Details -->
+	 <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+					<!-- Table Title -->
+					<h5 class="header-title">Footnotes</h5>
+					
+					<p>
+						The following data items are at the County-level. For issuers that are smaller, the County-level data will be used. Larger Issuers (e.g. States), will be calculated by aggregated County-level data:<br/>
+						- Air Quality Index<br/>
+						- Weeks of Drought in Year<br/>
+						- Population with Diabetes
+						</p>
+						<p>
+						All other data items are at the issuer-level.
+					</p>
+
+                </div> <!-- end card body-->
+            </div> <!-- end card -->
+        </div><!-- end col-->
+    </div>
+ 
+	 
+ </div> <!-- container -->
+
+              
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
